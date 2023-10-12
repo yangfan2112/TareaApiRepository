@@ -34,7 +34,7 @@ public class EmployeeServiceImpl implements EmployeeServices{
 			return null;
 		}
 		
-		for (Employee e : listEmployees) {
+		for (Employee e : new ArrayList<>(listEmployees)) {
 			if(e.getId() == id) {
 				this.listEmployees.remove(e);
 			}
