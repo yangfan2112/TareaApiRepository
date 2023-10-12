@@ -55,11 +55,9 @@ public class EmployeeRestController {
 	@DeleteMapping("/{id}")
 	public ResponseEntity deleteEmployee (@PathVariable Integer id) {
 		Employee remoEmployee = this.employeeServices.deleteEmployee(id);
-		if (id<0) {
-			return ResponseEntity.badRequest().build();
-		}
+		
 		if (remoEmployee != null) {
-            return ResponseEntity.ok(remoEmployee);
+			return ResponseEntity.noContent().build();
         } else {
             return ResponseEntity.notFound().build();
         }
