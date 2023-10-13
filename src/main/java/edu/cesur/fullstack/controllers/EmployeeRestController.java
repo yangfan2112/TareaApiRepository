@@ -6,6 +6,7 @@ import java.util.Arrays;
 
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -30,7 +31,7 @@ public class EmployeeRestController {
 	//Conexión con services
 	EmployeeServices employeeServices;
 	
-	public EmployeeRestController(@Qualifier("generales") EmployeeServices employeeServices) {
+	public EmployeeRestController(EmployeeServices employeeServices) {
 		this.employeeServices = employeeServices;
 	}
 	
@@ -43,7 +44,7 @@ public class EmployeeRestController {
 	}
 	
 	@PostMapping
-	public ResponseEntity<?> createEmployee(@RequestBody Employee employee){
+	public ResponseEntity<?> createEmployee(@RequestBody @Validated Employee employee){
 		Employee newEmployee = this.employeeServices.saveEmployee(employee);
 		
 		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(employee.getId())
@@ -78,7 +79,7 @@ public class EmployeeRestController {
 	}
 	
 	@PutMapping
-	public ResponseEntity<?> updateEmployee(@RequestBody Employee employee){
+	public ResponseEntity<?> updateEmployee(@RequestBody @Validated Employee employee){
 		Employee upEmployee = this.employeeServices.updateEmployee(employee);
 		if (upEmployee != null) {
             return ResponseEntity.ok(upEmployee);

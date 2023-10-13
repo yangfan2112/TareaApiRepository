@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 
 import edu.cesur.fullstack.models.Employee;
 
-@Service("generales")
+@Service
 public class EmployeeServiceImpl implements EmployeeServices{
 
 	ArrayList<Employee> listEmployees = new ArrayList<>(

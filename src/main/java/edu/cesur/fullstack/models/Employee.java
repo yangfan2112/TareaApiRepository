@@ -1,14 +1,24 @@
 package edu.cesur.fullstack.models;
 
+import edu.cesur.fullstack.validators.ValidEmployeeCode;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
+
 public class Employee {
 	
-	
+	@Positive
 	private Integer id;
 	
+	@NotNull
+	@NotEmpty
 	private String name;
 	
+	@Email
 	private String email;
 	
+	@ValidEmployeeCode
 	private String employeeCode;
 
 	public Employee(Integer id, String name, String email, String employeeCode) {
