@@ -1,10 +1,17 @@
 package edu.cesur.fullstack.models;
 
+
 import edu.cesur.fullstack.validators.ValidEmployeeCode;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 
 public class Employee {
 	
@@ -21,6 +28,7 @@ public class Employee {
 	@ValidEmployeeCode
 	private String employeeCode;
 
+	/*
 	public Employee(Integer id, String name, String email, String employeeCode) {
 		super();
 		this.id = id;
@@ -67,5 +75,5 @@ public class Employee {
 	}
 	
 	
-	
+	*/
 }
